@@ -4,7 +4,7 @@
 #include "switches.h"
 #include "buzzer.h"
 
-#include "lcdutils.h"
+#include <lcdutils.h>
 #include <lcddraw.h>
 #include <p2switches.h>
 
