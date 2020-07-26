@@ -1,4 +1,3 @@
-
 all: p2sw-demo.elf
 
 CPU             = msp430g2553
