@@ -1,7 +1,7 @@
 #include <msp430.h>
 #include "switches.h"
 #include "state_machine.h"
-#include "led.h"
+
 
 /* Switch on P2 (S2) */
 void
@@ -15,6 +15,6 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
 
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
-  sm_update_led();
-  led_update();
+  //sm_update_led();
+  //led_update();
 }
