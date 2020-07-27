@@ -5,7 +5,7 @@
 #include <lcdutils.h>
 #include <lcddraw.h>
 #include <p2switches.h>
-#include "triangle.c"
+#include "project3demo.h"
 
 #define GREEN_LED BIT6
 #define RED_LED BIT0
@@ -21,6 +21,5 @@ void main()
   lcd_init();
   p2sw_init(15);
   or_sr(0x8); /* GIE (enable interrupts) */
-
-  demo();
+  project_3_demo();
 }
