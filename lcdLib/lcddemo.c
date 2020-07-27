@@ -13,6 +13,8 @@ main()
   configureClocks();
   lcd_init();
   u_char width = screenWidth, height = screenHeight;
+  clearScreen(COLOR_SKY_BLUE);
+  /*
 
   clearScreen(COLOR_BLUE);
   //
@@ -30,8 +32,9 @@ main()
       drawPixel(row, col,COLOR_WHITE);
   }
   //
-  drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
+  */
+  drawString8x12(10,10, "hi", COLOR_WHITE, COLOR_BLUE);
 
-  fillRectangle(30,30, 60, 60, COLOR_ORANGE);
+  //fillRectangle(30,30, 60, 60, COLOR_ORANGE);
   
 }
