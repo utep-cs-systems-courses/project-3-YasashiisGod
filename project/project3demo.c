@@ -1,7 +1,6 @@
-
-
 #include <lcdutils.h>
 #include <lcddraw.h>
+#include <p2switches.h>
 #include "project3demo.h"
 
 void project_3_demo()
@@ -20,10 +19,14 @@ void project_3_demo()
   }
   drawString5x7(20,20, "Hey There Del..", COLOR_BLACK, COLOR_GREEN);
   */
-  drawString8x12(20,20, "Demo Game", COLOR_BLACK, COLOR_GREEN);
-
-  drawString8x12(40,40, "Start?", COLOR_BLACK, COLOR_GREEN);
 
   
-  //fillRectangle(20,30,90, 90, COLOR_WHITE);
+  
+  drawString8x12(10,20, "You got this!", COLOR_BLACK, COLOR_GREEN);
+
+  drawString8x12(19,45, "Keep going", COLOR_BLACK, COLOR_GREEN);
+
+  drawString8x12(50,70, ":)", COLOR_BLACK, COLOR_GREEN);
+
+  // fillRectangle(20,30,30, 30, COLOR_WHITE);
 }

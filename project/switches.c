@@ -1,6 +1,7 @@
 #include <msp430.h>
 #include "switches.h"
 #include "buzzer.h"
+#include "led.h"
 
 char switch_state_down, switch_state_changed;
 char s1_down, s2_down, s3_down, s4_down;

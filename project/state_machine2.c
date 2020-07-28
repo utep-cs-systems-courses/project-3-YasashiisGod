@@ -1,9 +1,11 @@
-#include "state_machine.h"
+#include "state_machine2.h"
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"
 #include <msp430.h>
- 
+
+
+
 //  variables for the state
 static enum {off = 0, dim =1, bright = 2} led_state;
 static char pwmCount = 0;
@@ -45,7 +47,7 @@ void sm_update_led(){
     green_on_alt = 1;
     break;
   case 1:             // Green is on
-    red_on_alt = (factor % 2);
+    red_on_alt = (0); //
     green_on_alt = 0;
     buzzer_set_period(6000);
     break;
@@ -55,7 +57,7 @@ void sm_update_led(){
     break;
   case 3:             // Red is on
     red_on_alt = 0;
-    green_on_alt = (factor % 2);
+    green_on_alt = (0); //
     buzzer_set_period(8000);
     break;
   case 4:             // Red dims

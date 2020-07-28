@@ -1,25 +1,32 @@
-#include "shape.h"
+#include <shape.h>
 #include "buzzer.h"
 #include "led.h"
 #include <libTimer.h>
 #include <lcdutils.h>
 #include <lcddraw.h>
-#include <p2switches.h>
+#include "switches.h"
 #include "project3demo.h"
+#include "state_machine2.h"
 
-#define GREEN_LED BIT6
-#define RED_LED BIT0
+unsigned char toggle_led;
 
 /** Initializes everything, clears the screen, draws "hello" and the circle */
 void main()
 {
-  P1DIR |= GREEN_LED; // Green on/CPU on
-  P1OUT |= GREEN_LED;
+  u_char width = screenWidth, height = screenHeight; 
   configureClocks();
   buzzer_init();
   led_init();
   lcd_init();
-  p2sw_init(15);
-  or_sr(0x8); /* GIE (enable interrupts) */
+  switch_init();
+ 
+  enableWDTInterrupts();
+  clearScreen(COLOR_BLACK);
+  
   project_3_demo();
+
+
+  P1OUT &= ~LED_GREEN; // turns off cpu
+  or_sr(0x18); /* GIE (enable interrupts) */
+  
 }
