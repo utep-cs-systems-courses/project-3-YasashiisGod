@@ -12,9 +12,11 @@ void led_init()
 }
 
 void led_update(){ // interesting
+
   if (led_changed){
-    char ledFlags = redVal[red_on] | greenVal[green_on];
-    P1OUT &= (0xff^LEDS) | ledFlags;
+    
+    char ledFlags = redVal[red_on] | greenVal[green_on]; 
+    P1OUT &= (0xff-LEDS) | ledFlags; // turn off leds 
 
     P1OUT |= ledFlags;
 

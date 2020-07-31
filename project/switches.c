@@ -34,7 +34,7 @@ void switch_interrupt_handler()
   s2_down = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   s3_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   s4_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
-
+  /*
   if (s1_down){
     light_mode = 1;
     factor++;
@@ -52,4 +52,5 @@ void switch_interrupt_handler()
     factor++;
   }
   switch_state_changed = 1;
+  */
 }

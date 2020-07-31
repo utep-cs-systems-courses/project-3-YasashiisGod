@@ -1,9 +1,9 @@
-#include <shape.h>
-#include "buzzer.h"
-#include "led.h"
+#include <msp430.h>
 #include <libTimer.h>
 #include <lcdutils.h>
 #include <lcddraw.h>
+#include "buzzer.h"
+#include "led.h"
 #include "switches.h"
 #include "project3demo.h"
 #include "state_machine2.h"
@@ -19,6 +19,7 @@ void main()
   led_init();
   lcd_init();
   switch_init();
+  state_init();
  
   enableWDTInterrupts();
   clearScreen(COLOR_BLACK);

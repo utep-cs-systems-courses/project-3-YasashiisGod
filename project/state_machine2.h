@@ -6,6 +6,8 @@
 //static enum {off, dim, bright} led_state;
 //static char pwmCount;
 
+extern unsigned char state; 
+
 void sm_slow_clock();
 char toggle_red();
 void state_advance();

@@ -48,7 +48,20 @@ void clearScreen(u_int colorBGR)
   fillRectangle(0, 0, screenWidth, screenHeight, colorBGR);
 }
 
+void drawTriangle(u_char colMin, u_char rowMin, u_char length, u_int colorBGR)
+{
+    for (int row = 1; row < length+1; row++)
+      {
+	for (int col = 1; col < (row+(row-1)); col++)
+	  {
+	    drawPixel((col+colMin)+(length-row), row+rowMin, colorBGR);
+	  }
+      }
+}
 
+
+
+  
 void drawChar8x12(u_char rcol, u_char rrow, char c, 
      u_int fgColorBGR, u_int bgColorBGR) 
 {

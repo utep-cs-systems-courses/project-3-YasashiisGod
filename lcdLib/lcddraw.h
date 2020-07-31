@@ -29,6 +29,8 @@ void fillRectangle(u_char colMin, u_char rowMin, u_char width, u_char height, u_
  */
 void clearScreen(u_int colorBGR);
 
+void drawTriangle(u_char colMin, u_char rowMin, u_char length, u_int colorBGR);
+
 void drawChar8x12(u_char col, u_char row, char c, 
 		 u_int fgColorBGR, u_int bgColorBGR);
 
