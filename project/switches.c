@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "buzzer.h"
 #include "led.h"
+#include "state_machine2.h"
 
 char switch_state_down, switch_state_changed;
 char s1_down, s2_down, s3_down, s4_down;
@@ -34,23 +35,21 @@ void switch_interrupt_handler()
   s2_down = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   s3_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   s4_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
-  /*
+  
   if (s1_down){
+    state_advance();
     light_mode = 1;
-    factor++;
   }
   if (s2_down){
+    state_advance();
     light_mode = 2;
-    factor++;
   }
   if (s3_down){
+    state_advance();
     light_mode = 3;
-    factor++;
   }
   if (s4_down){
+    state_advance();
     light_mode = 4;
-    factor++;
   }
-  switch_state_changed = 1;
-  */
 }

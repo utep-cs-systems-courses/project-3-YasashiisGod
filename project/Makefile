@@ -9,7 +9,7 @@ CC              = msp430-elf-gcc
 AS              = msp430-elf-as 
 AR              = msp430-elf-ar
 
-project3-demo.elf: ${COMMON_OBJECTS} main.o buzzer.o project3demo.o state_machine2.o led.o switches.o switches.o p2_interrupt_handler.o
+project3-demo.elf: ${COMMON_OBJECTS} main.o buzzer.o project3demo.o state_machine2.o led.o switches.o switches.o p2_interrupt_handler.o state_machine1.o
 	$(CC) $(CFLAGS) ${LDFLAGS} -o $@ $^ -lLcd -lp2sw -lTimer -lShape -lCircle 
 
 clean:
