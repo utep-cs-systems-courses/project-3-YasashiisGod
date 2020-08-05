@@ -2,6 +2,6 @@
 #define state_assembly_included
 
 int colorTextPlacement(char state);
-
+char dimmerSet(char dim);
 #endif
 

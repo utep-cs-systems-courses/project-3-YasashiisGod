@@ -20,14 +20,24 @@ two:
 	MOV #41, R12
 	jmp end
 three:
-	MOV #41, R12 // 29 in hex is 41
+	MOV #41, R12 // 
 	jmp end
 four:
 	MOV #71, R12
 	jmp end
 default:
-	MOV #200, R12 //200
+	MOV #200, R12 //
 	jmp end
 end:
 	RET
 
+	.global dimmerSet
+dimmerSet:
+	CMP.B #4, R12
+	JNE bright
+	MOV.B #1, R12
+	JMP dim
+bright:
+	MOV.B #0, R12
+dim:
+	RET
