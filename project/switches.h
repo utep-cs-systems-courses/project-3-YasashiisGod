@@ -16,4 +16,4 @@ extern char s1_down, s2_down, s3_down, s4_down;
 extern char light_mode, factor;
 extern int redrawScreen; 
 
-#endif // included
+#endif // included int redrawScreen

@@ -37,7 +37,7 @@ void switch_interrupt_handler()
   s3_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   s4_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
 
-  /*
+  /* commented out bad logic 
   if (s1_down){
     redrawScreen = 1;
     state_advance();
