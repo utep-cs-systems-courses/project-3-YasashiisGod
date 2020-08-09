@@ -4,9 +4,10 @@
 #include "led.h"
 #include "state_machine2.h"
 
+int redrawScreen; 
+
 char switch_state_down, switch_state_changed;
 char s1_down, s2_down, s3_down, s4_down;
-char light_mode = 0, factor = 0;
 
 static char switch_update_interrupt_sense()
 {
@@ -25,7 +26,7 @@ switch_init()			/* setup switch */
   P2OUT |= BUTTONS;		/* pull-ups for switches */
   P2DIR &= ~BUTTONS;		/* set switches' bits for input */
   switch_update_interrupt_sense();
-  led_update();
+  //led_update();
 }
 
 void switch_interrupt_handler()
@@ -35,21 +36,27 @@ void switch_interrupt_handler()
   s2_down = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   s3_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   s4_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
-  
+
+  /*
   if (s1_down){
+    redrawScreen = 1;
     state_advance();
     light_mode = 1;
   }
   if (s2_down){
+    redrawScreen = 1;
     state_advance();
     light_mode = 2;
   }
   if (s3_down){
+    redrawScreen = 1;
     state_advance();
     light_mode = 3;
   }
   if (s4_down){
+    redrawScreen = 1;
     state_advance();
     light_mode = 4;
   }
+*/
 }

@@ -32,9 +32,6 @@ void play_sound(){
   short A = 293.66;
   short B = 349.23;
   short D = 392.00;
-
-  //int tone [7] = {A, B, D, 0, D, B, A};
-  //int tone [100] = {,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,} 
   for (int i = 0; i < 50; i++)
     {
       buzzer_set_period(i*70);
@@ -48,30 +45,20 @@ void play_sound(){
   buzzer_set_period(0);
   return;
 }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void play_sound2(){
+  short A = 293.66;
+  short B = 349.23;
+  short D = 392.00;
+  for (int i = 50; i > 0; i--)
+    {
+      for (int i = 0; i < 50; i++)
+	{
+	  buzzer_set_period(i*30);
+	  __delay_cycles(25000);
+	} 
+      buzzer_set_period(i*55);
+      __delay_cycles(25000);
+    } 
+  buzzer_set_period(0);
+  return;
+}

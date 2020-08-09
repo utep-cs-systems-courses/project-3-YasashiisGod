@@ -8,7 +8,8 @@
 #include "switches.h"
 #include "state_machine1.h"
 
-unsigned char toggle_led;
+unsigned char toggle_led, state;
+int redrawScreen;
 static char dim = 0;
 
 //Intializes state machine and variables
@@ -20,14 +21,12 @@ void reset_states() {
   state = 0;
   toggle_led = 0;
   buzzer_set_period(0);
-  led_update();
 }
 
 void stateDeterminedScreen() {
   u_char width = screenWidth, height = screenHeight;
   clearScreen(COLOR_BLACK);
   drawString5x7((width-75), 5,"*B4 to reset", COLOR_RED, COLOR_BLACK); // Always shown
-
   switch (state) {
   case 0:
     drawString5x7(5,42,"Press B1 to", COLOR_WHITE, COLOR_BLACK);
@@ -72,8 +71,6 @@ void stateDeterminedScreen() {
     drawTriangle(10,100, 60, COLOR_RED);
     break;
   }
-  toggle_led &= ~LED_GREEN; //cpu off signal
-  or_sr(0x18);
 }
 /*
 //second method for assembly
@@ -109,66 +106,70 @@ int colorTextPlacement(char state){
 } 
 */   
 void state_advance() {
+  led_update();
   //Switch 4 is reset during every state 
   if(s4_down)
     {
       reset_states();
-      stateDeterminedScreen();
+      redrawScreen = 1;
     }
    
   switch (state) {
   case 1:       
-    toggle_led |= LED_RED;
     if (dimmerSet(dim))
       {
-	toggle_led = LED_GREEN;
+	toggle_led |= LED_GREEN;
 	dim = 0;
       }
     else
       {
-	toggle_led = 0;
+	toggle_led &= ~LED_GREEN;
 	dim++;
       }
     if(s2_down)
       {
-	state = 2;
+        state = 2;
 	buzzer_set_period(2000);
 	colorText(colorTextPlacement(state));
-	stateDeterminedScreen();
+	redrawScreen = 1;
       }
     break;
   case 2:              
-    toggle_led |= LED_RED;
-    if (dim == 0)
-      toggle_led = LED_GREEN;
+    if (dimmerSet(dim))
+      {
+	toggle_led |= LED_GREEN;
+	dim = 0;
+      }
     else
-      toggle_led = 0;
+      {
+	toggle_led &= ~LED_GREEN;
+	dim++;
+      }
     if(s3_down)
       {
 	state = 3;
 	buzzer_set_period(3000);
 	colorText(colorTextPlacement(state));
-	stateDeterminedScreen();
+	redrawScreen = 1;
       }
     break;
   case 3:     
-    toggle_led |= LED_GREEN;
     if (dimmerSet(dim))
       {
-	toggle_led = LED_RED;
+	toggle_led |= LED_GREEN;
 	dim = 0;
       }
     else
       {
-	toggle_led = 0;
+	toggle_led &= ~LED_GREEN;
 	dim++;
-      }  
+      } 
     if(s1_down && s3_down)
       {
 	state = 4;
 	buzzer_set_period(4000);
 	colorText(colorTextPlacement(state));
-	stateDeterminedScreen();
+	redrawScreen = 1;
       }
     break;
   case 4:
@@ -176,19 +177,18 @@ void state_advance() {
     state = 0;
     play_sound();                            //Song player at end state
     colorText(colorTextPlacement(state));
-    stateDeterminedScreen();
+    redrawScreen = 1;
     break;
-  case 0:     
+  case 0:
     toggle_led |= LED_GREEN;
     if(s1_down)
       {
 	state = 1;
 	buzzer_set_period(1000);
-        stateDeterminedScreen();
+        redrawScreen = 1;
       }
     break;
   default:
     break;
   }
-  led_update();
 }

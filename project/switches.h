@@ -14,6 +14,6 @@ void switch_interrupt_handler();
 extern char switch_state_down, switch_state_changed;
 extern char s1_down, s2_down, s3_down, s4_down;
 extern char light_mode, factor;
-
+extern int redrawScreen; 
 
 #endif // included

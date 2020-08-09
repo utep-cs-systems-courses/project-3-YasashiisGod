@@ -3,7 +3,7 @@
 #include "state_machine2.h"
 #include "led.h"
 
-unsigned char state; 
+
 /* Switch on P2 (S2) */
 void
 __interrupt_vec(PORT2_VECTOR) Port_2(){
@@ -13,11 +13,11 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
   }
 }
 
-
+/*
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
 
-  P1OUT |= LED_GREEN;
+  P1OUT |= RED_LED;
   static char count = 0;
   if (++count == 125) {
     if (state != 3)
@@ -26,6 +26,8 @@ __interrupt_vec(WDT_VECTOR) WDT(){
   }
   if (state == 3)
     state_advance();    // Calls state advance for all other cases for toggling
-  P1OUT &= ~LED_GREEN;
+  P1OUT &= ~RED_LED;
 
 }
+
+*/

@@ -8,10 +8,10 @@
 
 extern unsigned char state; 
 
-void sm_slow_clock();
 char toggle_red();
 void state_advance();
 void sm_update_led();
 void state_init();
+void stateDeterminedScreen();
 
 #endif
