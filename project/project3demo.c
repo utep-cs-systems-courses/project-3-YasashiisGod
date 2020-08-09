@@ -3,6 +3,8 @@
 #include <p2switches.h>
 #include "project3demo.h"
 
+// Loading screen... shooting lasers 
+
 void project_3_demo()
 {
   u_char width = screenWidth, height = screenHeight;
