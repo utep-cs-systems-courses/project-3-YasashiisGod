@@ -42,7 +42,7 @@ void main()
 void wdt_c_handler()
 {
   //P1OUT |= RED_LED;
-  static char count = 0;
+  static char count = 0; // added logic from old handler
   if (++count == 125) {
     if (state != 3)
       state_advance();    // Calls state advance for all other cases for toggling
