@@ -45,7 +45,7 @@ void play_sound(){
   buzzer_set_period(0);
   return;
 }
-void play_sound2(){
+void play_sound2(){ // added intro sound
   short A = 293.66;
   short B = 349.23;
   short D = 392.00;
