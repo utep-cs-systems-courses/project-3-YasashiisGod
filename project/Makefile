@@ -16,8 +16,3 @@ clean:
 
 load: project3-demo.elf
 	msp430loader.sh project3-demo.elf $^
-
-#lcddraw.o:lcddraw.c lcddraw.h lcdutils.h
-
-#lcdutils.o: lcdutils.c lcdutils.h
-
