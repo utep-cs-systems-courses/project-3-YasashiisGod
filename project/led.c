@@ -5,7 +5,7 @@ void led_init()
 {
   P1DIR |= LEDS;		// bits attached  to leds are output
   led_update();
-}
+} // Nothing changed
 
 void led_update(){ 
   char ledFlags = 0; //state_machine given value for toggle

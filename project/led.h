@@ -7,7 +7,7 @@
 #define LED_RED BIT0             // P1.6
 #define LEDS (BIT0 | BIT6)
 
-// these are boolean flags
+// these are boolean flags reverted
 extern unsigned char toggle_led;
 
 void led_init();		/* initialize LEDs */
