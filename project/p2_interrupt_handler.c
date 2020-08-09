@@ -12,7 +12,7 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
     switch_interrupt_handler();	/* single handler for all switches */
   }
 }
-
+// added to main, deleted from here 
 /*
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
